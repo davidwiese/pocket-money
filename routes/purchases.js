@@ -7,6 +7,8 @@ router.get("/", ensureAuth, purchasesController.getPurchases);
 
 router.post("/createPurchase", purchasesController.createPurchase);
 
+router.post("/editGoal", purchasesController.editGoal);
+
 router.delete("/deletePurchase", purchasesController.deletePurchase);
 
 module.exports = router;

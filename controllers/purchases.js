@@ -40,4 +40,15 @@ module.exports = {
       console.log(err);
     }
   },
+  editGoal: async (req, res) => {
+    const { newGoal } = req.body;
+    try {
+      const user = await User.findOne({ _id: req.user.id });
+      user.goal = newGoal;
+      await user.save();
+      res.redirect("/purchases");
+    } catch (err) {
+      console.log(err);
+    }
+  },
 };
