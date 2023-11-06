@@ -6,10 +6,11 @@ module.exports = {
     console.log(req.user);
     try {
       const purchaseItems = await Purchase.find({ userId: req.user.id });
-      const goalLeft = await User.find({ userId: req.user.goal });
+      const user = await User.findOne({ _id: req.user.id }, "goal");
+      const userGoal = user ? user.goal : 0;
       res.render("purchases.ejs", {
         purchases: purchaseItems,
-        goal: goalLeft,
+        userGoal: userGoal,
         user: req.user,
       });
     } catch (err) {
