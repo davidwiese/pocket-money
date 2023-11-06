@@ -8,20 +8,31 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <h1>Purchases</h1>
-    <ul>
-      <% purchases.forEach( el => { %>
-      <li class="purchaseItem" data-id="<%=el._id%>">
-        <span class="purchase"><%= el.purchase %></span>
-        <span class="price"><%= el.price %></span>
-        <span class="del"> Delete </span>
-      </li>
-      <% }) %>
-    </ul>
+    <h1>Pocket Money</h1>
+
+    <section class="purchases">
+      <ul>
+        <% purchases.forEach( el => { %>
+        <li class="purchaseItem" data-id="<%=el._id%>">
+          <span class="purchase"><%= el.purchase %></span>
+          <span class="price"><%= el.price %></span>
+          <span class="del"> Delete </span>
+        </li>
+        <% }) %>
+      </ul>
+    </section>
+    <section class="total">
+      <ul>
+        <li class="purchaseTotal">
+          <span class="totalText"><strong>Total</strong></span>
+          <span class="totalCalculation"><strong>XXX</strong></span>
+        </li>
+      </ul>
+    </section>
 
     <form action="/purchases/createPurchase" method="POST">
       <input type="text" placeholder="Enter Purchase" name="purchaseItem" />
-      <input type="number" placeholder="Price" name="price" />
+      <input type="number" step="0.01" placeholder="Price" name="price" />
       <input type="submit" />
     </form>
 

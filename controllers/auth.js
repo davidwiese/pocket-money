@@ -77,7 +77,7 @@ exports.postSignup = (req, res, next) => {
     validationErrors.push({ msg: "Passwords do not match" });
 
   //Add validation for spending goal
-  const goalRegex = /^\d+$/;
+  const goalRegex = /^(?:\d+(\.\d{1,2})?|\.\d{1,2})$/;
   if (!goalRegex.test(req.body.goal)) {
     validationErrors.push({ msg: "Spending goal should contain only numbers" });
   }
