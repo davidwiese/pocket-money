@@ -1,16 +1,12 @@
-const express = require('express')
-const router = express.Router()
-const todosController = require('../controllers/todos') 
-const { ensureAuth } = require('../middleware/auth')
+const express = require("express");
+const router = express.Router();
+const purchasesController = require("../controllers/purchases");
+const { ensureAuth } = require("../middleware/auth");
 
-router.get('/', ensureAuth, todosController.getTodos)
+router.get("/", ensureAuth, purchasesController.getPurchases);
 
-router.post('/createTodo', todosController.createTodo)
+router.post("/createPurchase", purchasesController.createPurchase);
 
-router.put('/markComplete', todosController.markComplete)
+router.delete("/deletePurchase", purchasesController.deletePurchase);
 
-router.put('/markIncomplete', todosController.markIncomplete)
-
-router.delete('/deleteTodo', todosController.deleteTodo)
-
-module.exports = router
+module.exports = router;
