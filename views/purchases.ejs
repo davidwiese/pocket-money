@@ -34,7 +34,8 @@
 
     <section class="remaining-total">
       <span class="remaining-text">Total remaining:</span>
-      <span class="remaining-number"><%= userGoal %></span>
+      <% const remainingAmount = userGoal - totalPrice; %>
+      <span class="remaining-number"><%= remainingAmount.toFixed(2) %></span>
     </section>
 
     <form action="/purchases/createPurchase" method="POST">
