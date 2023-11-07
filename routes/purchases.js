@@ -11,4 +11,6 @@ router.post("/editGoal", purchasesController.editGoal);
 
 router.delete("/deletePurchase", purchasesController.deletePurchase);
 
+router.delete("deleteAll", purchasesController.deleteAllPurchases);
+
 module.exports = router;

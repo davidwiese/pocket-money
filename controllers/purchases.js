@@ -42,16 +42,12 @@ module.exports = {
   },
   deleteAllPurchases: async (req, res) => {
     try {
-      const userID = req.user.id;
-      const result = await Purchase.deleteMany({ userID });
-
-      if (result.deletedCount > 0) {
-        res.json({ message: "All purchases deleted successfully." });
-      } else {
-        res.json({ message: "No purchases to delete." });
-      }
+      await Purchase.deleteMany({ userID: req.user.id });
+      console.log("All purchases deleted");
+      res.json("All purchases deleted");
     } catch (err) {
       console.log(err);
+      res.status(500).json({ error: "Failed to delete all purchases" });
     }
   },
   editGoal: async (req, res) => {
