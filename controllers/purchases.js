@@ -42,9 +42,11 @@ module.exports = {
   },
   deleteAllPurchases: async (req, res) => {
     try {
-      await Purchase.deleteMany({ userID: req.user.id });
+      const { purchaseIDsFromJSFile } = req.body;
+
+      await Purchase.deleteMany({ _id: { $in: purchaseIDsFromJSFile } });
       console.log("All purchases deleted");
-      res.json("All purchases deleted");
+      res.status(200).json("All purchases deleted");
     } catch (err) {
       console.log(err);
       res.status(500).json({ error: "Failed to delete all purchases" });

@@ -28,12 +28,24 @@ async function deletePurchase() {
 
 async function deleteAllPurchases() {
   try {
+    const purchaseElements = document.querySelectorAll(".purchase-item");
+    const purchaseIDs = Array.from(purchaseElements).map(
+      (item) => item.dataset.id
+    );
     const response = await fetch("purchases/deleteAll", {
       method: "delete",
       headers: { "Content-type": "application/json" },
+      body: JSON.stringify({
+        purchaseIDsFromJSFile: purchaseIDs,
+      }),
     });
-    const data = await response.json();
-    console.log(data);
+
+    if (response.status === 200) {
+      console.log("All purchases deleted");
+      location.reload();
+    } else {
+      console.log("Failed to delete all purchases");
+    }
   } catch (err) {
     console.log(err);
   }
