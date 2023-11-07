@@ -1,9 +1,14 @@
+const { deleteAllPurchases } = require("../../controllers/purchases");
+
 const deleteBtn = document.querySelectorAll(".del");
+const deleteAllBtn = document.getElementById("deleteAll");
 const purchaseItem = document.querySelectorAll("span.purchase");
 
 Array.from(deleteBtn).forEach((el) => {
   el.addEventListener("click", deletePurchase);
 });
+
+deleteAllBtn.addEventListener("click", deleteAllPurchases);
 
 async function deletePurchase() {
   const purchaseId = this.parentNode.dataset.id;

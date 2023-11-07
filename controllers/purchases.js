@@ -40,6 +40,20 @@ module.exports = {
       console.log(err);
     }
   },
+  deleteAllPurchases: async (req, res) => {
+    try {
+      const userID = req.user.id;
+      const result = await Purchase.deleteMany({ userID });
+
+      if (result.deletedCount > 0) {
+        res.json({ message: "All purchases deleted successfully." });
+      } else {
+        res.json({ message: "No purchases to delete." });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  },
   editGoal: async (req, res) => {
     const { newGoal } = req.body;
     try {
