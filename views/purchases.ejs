@@ -13,14 +13,14 @@
   <body>
     <div class="flex justify-center items-center min-h-screen">
       <div class="app text-center">
-        <h1 class="text-4xl">Pocket Money</h1>
+        <h1 class="text-5xl mb-8">Pocket Money</h1>
 
         <section class="purchases">
           <ul class="flex flex-col">
             <% let totalPrice = 0; %> <% purchases.forEach( el => { %>
             <li class="purchase-item flex items-center mb-1 input input-bordered pr-0" data-id="<%=el._id%>">
               <span class="purchase w-4/5 text-left"><%= el.purchase %></span>
-              <span class="price w-1/5 text-right mr-8"><%= el.price %></span>
+              <span class="price w-1/5 text-right mr-8">$<%= el.price %></span>
               <span class="del h-4 btn btn-error ml-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -47,7 +47,7 @@
             <li class="purchase-total flex items-center mb-1 input input-bordered pr-0">
               <span class="total-text w-4/5 text-left"><strong>Total</strong></span>
               <span class="total-calculation w-1/5 text-right mr-8"
-                ><strong><%= totalPrice %></strong></span
+                ><strong>$<%= totalPrice %></strong></span
               >
               <button id="deleteAll" class="del btn btn-error h-4 ml-auto bg-red-500 border-red-500">
                 <svg
@@ -71,8 +71,8 @@
         <section class="remaining-total">
           <span class="remaining-text">Total remaining:</span>
           <% const remainingAmount = userGoal - totalPrice; %>
-          <span class="remaining-number"
-            ><%= remainingAmount.toFixed(2) %></span
+          <span class="remaining-number <%= remainingAmount >= 0 ? 'text-green-300' : 'text-red-500' %>"
+            >$<%= remainingAmount.toFixed(2) %></span
           >
         </section>
         <div class="divider"></div>   
