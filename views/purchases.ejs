@@ -18,11 +18,11 @@
         <section class="purchases">
           <ul class="flex flex-col">
             <% let totalPrice = 0; %> <% purchases.forEach( el => { %>
-            <li data-id="<%=el._id%>">
-              <span class="purchase"><%= el.purchase %></span>
-              <span class="price"><%= el.price %></span>
-              <span class="del h-4 btn btn-error p-1
-                ""><svg
+            <li class="purchase-item flex items-center mb-1 input input-bordered pr-0" data-id="<%=el._id%>">
+              <span class="purchase w-4/5 text-left"><%= el.purchase %></span>
+              <span class="price w-1/5 text-right mr-8"><%= el.price %></span>
+              <span class="del h-4 btn btn-error ml-auto">
+                <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -70,7 +70,7 @@
             name="price"
             class="input input-bordered w-full" 
           /><br>
-          <input type="submit" class="btn w-full btn-success mb-8"/>
+          <button type="submit" class="btn w-full btn-success mb-8"/>Add purchase</button>
         </form>
 
         <form action="/purchases/editGoal" method="POST">
@@ -86,6 +86,11 @@
         <a href="/logout" class="btn btn-active btn-ghost">Logout</a>
       </div>
     </div>
+    <footer class="footer footer-center p-4 bg-base-300 text-base-content">
+      <aside>
+        <p>Copyright © 2023 - All right reserved by David Wiese</p>
+      </aside>
+    </footer>
     <script src="js/main.js"></script>
   </body>
 </html>
