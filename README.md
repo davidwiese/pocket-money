@@ -2,7 +2,7 @@
 
 Effortlessly track daily spending, set goals, and gain financial clarity. Your key to smart, stress-free money management.
 
-<img src="/pocket-money.gif" width="250" height="250"/>
+<img src="/pocket-money.gif" width="600" height="750"/>
 
 **Link to project:**
 
