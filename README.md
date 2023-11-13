@@ -1,8 +1,10 @@
 # Pocket Money
 
 Effortlessly track daily spending, set goals, and gain financial clarity. Your key to smart, stress-free money management.
+[
+![](https://github.com/davidwiese/pocket-money/blob/main/pocket-money.gif)
 
-<img src="/pocket-money.gif" width="600" height="750"/>
+<img src="https://github.com/davidwiese/pocket-money/blob/main/pocket-money.gif" width="600" height="750" />
 
 **Link to project:**
 
