@@ -9,7 +9,7 @@
     "dev": "npx tailwindcss -i ./public/css/style.css -o ./public/css/output.css & nodemon server.js"
   },
   "author": "",
-  "license": "MIT",
+  "license": "",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "connect-mongo": "^3.2.0",
