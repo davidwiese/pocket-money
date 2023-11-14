@@ -30,8 +30,8 @@
           <ul class="flex flex-col">
             <% let totalPrice = 0; %> <% purchases.forEach( el => { %>
             <li class="purchase-item flex items-center mb-1 input input-bordered pr-0" data-id="<%=el._id%>">
-              <span class="purchase w-5/6 text-left text-gray-300"><%= el.purchase %></span><div class="divider divider-horizontal my-2"></div>
-              <span class="price w-1/6 text-right mr-8 text-gray-300">$<%= el.price %></span>
+              <span class="purchase w-5/6 text-left text-sm md:text-base text-gray-300"><%= el.purchase %></span><div class="divider divider-horizontal my-2"></div>
+              <span class="price w-1/6 text-right text-xs md:text-base mr-8 text-gray-300">$<%= el.price %></span>
               <span class="del h-4 btn btn-error ml-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@
         <div class="divider mb-8"></div>
         <h2 class="text-2xl mb-8 text-gray-200">Add Purchase</h2>
         <form action="/purchases/createPurchase" method="POST">
-          <input type="text" maxlength="23" placeholder="Enter purchase" name="purchaseItem" class="input input-bordered w-full mb-1 text-gray-200" required/>
+          <input type="text" maxlength="27" placeholder="Enter purchase" name="purchaseItem" class="input input-bordered w-full mb-1 text-gray-200" required/>
           <input
             type="number"
             step="0.01"
