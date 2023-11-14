@@ -42,6 +42,11 @@ app.use(flash());
 app.use("/", mainRoutes);
 app.use("/purchases", purchaseRoutes);
 
+// Health check route
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
+
 // Import cron job
 const { job } = require("./cron");
 
