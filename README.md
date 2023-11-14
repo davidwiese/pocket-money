@@ -10,7 +10,7 @@ Effortlessly track daily spending, set goals, and gain financial clarity. Your k
 
 **Tech used:** EJS, Tailwind, MongoDB/Mongoose, Node, Express, JavaScript, HTML, CSS
 
-Pocket Money is a full-stack web app designed to simplify personal finance management. Built using MongoDB, Express.js, EJS, and Node.js (MEEN stack), it provides users with a seamless experience to track their daily spending, set simple achievable goals, and achieve more clarity and control over their finances. It is built using the MVC design pattern for future scaling and maintainability. The frontend is crafted with EJS and styled with Tailwind CSS for a cohesive and responsive design. Node and Express handle the authentication while MongoDB serves as robust database solution.
+Pocket Money is a full-stack web app designed to simplify personal finance management. Built using MongoDB, Express.js, EJS, and Node.js (MEEN stack), it provides users with a seamless experience to track their daily spending, set simple goals, and achieve more clarity and control over their finances. It is built using the MVC design pattern for future scaling and maintainability. The frontend is crafted with EJS and styled with Tailwind CSS for a cohesive and responsive design. Node and Express handle the authentication while MongoDB serves as robust database solution.
 
 **Packages/Dependencies used:** bcrypt, connect-mongo, ejs, express, express-flash, express-session, mongodb, mongoose, morgan, passport, validator
 
