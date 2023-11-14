@@ -2,7 +2,7 @@
 const cron = require("cron");
 const https = require("https");
 
-const backendUrl = process.env.BACKEND_URL + "/health";
+const backendUrl = "https://pocket-money.onrender.com:10000/health";
 const job = new cron.CronJob("*/14 * * * *", function () {
   //This function will be executed every 14 minutes
   console.log("Checking server status...");
