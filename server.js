@@ -22,6 +22,7 @@ app.use(express.static("public"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(logger("dev"));
+
 // Sessions
 app.use(
   session({
@@ -40,6 +41,12 @@ app.use(flash());
 
 app.use("/", mainRoutes);
 app.use("/purchases", purchaseRoutes);
+
+// Import cron job
+const { job } = require("./cron");
+
+// Start cron job
+job.start();
 
 app.listen(process.env.PORT, () => {
   console.log("Server is running, you better catch it!");
