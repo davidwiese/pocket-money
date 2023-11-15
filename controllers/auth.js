@@ -13,35 +13,55 @@ exports.getLogin = (req, res) => {
 
 exports.postLogin = (req, res, next) => {
   const validationErrors = [];
-  if (!validator.isEmail(req.body.email))
-    validationErrors.push({ msg: "Please enter a valid email address." });
-  if (validator.isEmpty(req.body.password))
+  // Validate if either email or username field is empty
+  if (validator.isEmpty(req.body.emailOrUsername)) {
+    validationErrors.push({ msg: "Username or email cannot be blank." });
+  }
+  if (validator.isEmpty(req.body.password)) {
     validationErrors.push({ msg: "Password cannot be blank." });
+  }
 
   if (validationErrors.length) {
     req.flash("errors", validationErrors);
     return res.redirect("/login");
   }
-  req.body.email = validator.normalizeEmail(req.body.email, {
-    gmail_remove_dots: false,
-  });
 
-  passport.authenticate("local", (err, user, info) => {
-    if (err) {
-      return next(err);
-    }
-    if (!user) {
-      req.flash("errors", info);
-      return res.redirect("/login");
-    }
-    req.logIn(user, (err) => {
+  const { emailOrUsername, password } = req.body;
+
+  User.findOne(
+    {
+      $or: [
+        { email: emailOrUsername.toLowerCase() },
+        { userName: emailOrUsername.toLowerCase() },
+      ],
+    },
+    (err, user) => {
       if (err) {
         return next(err);
       }
-      req.flash("success", { msg: "Success! You are logged in." });
-      res.redirect(req.session.returnTo || "/purchases");
-    });
-  })(req, res, next);
+      if (!user) {
+        req.flash("errors", { msg: "Invalid username or email" });
+        return res.redirect("/login");
+      }
+      user.comparePassword(password, (err, isMatch) => {
+        if (err) {
+          return next(err);
+        }
+        if (isMatch) {
+          req.logIn(user, (err) => {
+            if (err) {
+              return next(err);
+            }
+            req.flash("success", { msg: "Success! You are logged in." });
+            res.redirect(req.session.returnTo || "/purchases");
+          });
+        } else {
+          req.flash("errors", { msg: "Invalid password" });
+          res.redirect("/login");
+        }
+      });
+    }
+  );
 };
 
 exports.logout = (req, res) => {
