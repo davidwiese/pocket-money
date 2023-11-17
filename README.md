@@ -4,7 +4,7 @@ Effortlessly track daily spending, set goals, and gain financial clarity. Your k
 
 ![](https://github.com/davidwiese/pocket-money/blob/main/pocket-money.gif)
 
-**Link to project:** https://pocket-money.onrender.com/
+**Link to project:** [Pocket Money](https://pocket-money.onrender.com/)
 
 ## How It's Made
 
