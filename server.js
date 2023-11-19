@@ -30,7 +30,7 @@ app.use(
     resave: false,
     saveUninitialized: false,
     store: new MongoStore({ mongooseConnection: mongoose.connection }),
-  })
+  }),
 );
 
 // Passport middleware
@@ -54,5 +54,5 @@ const { job } = require("./cron");
 job.start();
 
 app.listen(process.env.PORT, () => {
-  console.log("Server is running, you better catch it!");
+  console.log(`Server is running on port: ${process.env.PORT}`);
 });
