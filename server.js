@@ -1,4 +1,5 @@
 const express = require("express");
+require("dotenv").config({ path: "./config/.env" });
 var Recaptcha = require("express-recaptcha").RecaptchaV2;
 const app = express();
 const mongoose = require("mongoose");
@@ -11,15 +12,13 @@ const connectDB = require("./config/database");
 const mainRoutes = require("./routes/main");
 const purchaseRoutes = require("./routes/purchases");
 
-require("dotenv").config({ path: "./config/.env" });
-
 // Recaptcha initialization
 var options = { theme: "dark" };
-// var recaptcha = new Recaptcha(
-//   process.env.RECAPTCHA_SITE_KEY,
-//   process.env.RECAPTCHA_SECRET_KEY,
-//   options,
-// );
+var recaptcha = new Recaptcha(
+  process.env.RECAPTCHA_SITE_KEY,
+  process.env.RECAPTCHA_SECRET_KEY,
+  options,
+);
 
 // Passport config
 require("./config/passport")(passport);

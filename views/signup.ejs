@@ -92,14 +92,5 @@
         <p>Copyright © 2023 - All right reserved by David Wiese</p>
       </aside>
     </footer>
-    <script>
-      document.getElementById("submit-form").onsubmit = function(e) {
-        e.preventDefault()
-
-        //Get captcha response
-        let formData = new FormData(document.getElementById("submit-form"))
-        let captchaResponse = formData.get("g-recaptcha-response")
-      }
-    </script>
   </body>
 </html>
