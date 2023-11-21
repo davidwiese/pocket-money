@@ -1815,6 +1815,10 @@ html {
   height: 74px;
 }
 
+.h-\[72px\] {
+  height: 72px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
