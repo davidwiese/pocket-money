@@ -78,7 +78,9 @@
           />
           
           <div class="text-center">
-            <div class="g-recaptcha inline-block mb-4" data-sitekey="<%= process.env.RECAPTCHA_SITE_KEY %>"></div>
+            <div class="w-[298px] h-[74px] overflow-hidden mt-0 mb-4 mx-auto">
+              <div class="g-recaptcha relative left-[-2px] top-[-1px]" data-theme="dark" data-sitekey="<%= process.env.RECAPTCHA_SITE_KEY %>"></div>
+            </div>
           </div>
           
           <input value="SIGNUP" type="submit" class="btn btn-success" />
