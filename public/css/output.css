@@ -1737,6 +1737,23 @@ html {
   margin-right: auto;
 }
 
+.relative {
+  position: relative;
+}
+
+.left-\[-2px\] {
+  left: -2px;
+}
+
+.top-\[-1px\] {
+  top: -1px;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -1766,6 +1783,10 @@ html {
   margin-right: 2rem;
 }
 
+.mt-0 {
+  margin-top: 0px;
+}
+
 .flex {
   display: flex;
 }
@@ -1790,6 +1811,10 @@ html {
   height: 1.5rem;
 }
 
+.h-\[74px\] {
+  height: 74px;
+}
+
 .min-h-screen {
   min-height: 100vh;
 }
@@ -1808,6 +1833,10 @@ html {
 
 .w-6 {
   width: 1.5rem;
+}
+
+.w-\[298px\] {
+  width: 298px;
 }
 
 .w-full {
@@ -1836,6 +1865,10 @@ html {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }
 
 .border-red-500 {

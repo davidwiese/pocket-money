@@ -18,6 +18,7 @@
       type="image/x-icon"
       sizes="16x16"
     />
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body>
     <div class="flex justify-center items-center min-h-screen p-2">
@@ -44,7 +45,7 @@
           </svg>
           <h1 class="text-gray-200" style="font-size: 2.5rem">Pocket Money</h1>
         </header>
-        <form action="/signup" method="POST" class="flex flex-col">
+        <form action="/signup" method="POST" class="flex flex-col" id="submit-form">
           <input
             type="text"
             name="userName"
@@ -75,6 +76,13 @@
             placeholder="Confirm password"
             class="input input-bordered w-full mb-4 text-gray-200"
           />
+          
+          <div class="text-center">
+            <div class="w-[298px] h-[74px] overflow-hidden mt-0 mb-4 mx-auto">
+              <div class="g-recaptcha relative left-[-2px] top-[-1px]" data-theme="dark" data-sitekey="<%= process.env.RECAPTCHA_SITE_KEY %>"></div>
+            </div>
+          </div>
+          
           <input value="SIGNUP" type="submit" class="btn btn-success" />
         </form>
       </div>
@@ -84,6 +92,5 @@
         <p>Copyright © 2023 - All right reserved by David Wiese</p>
       </aside>
     </footer>
-    <script src="js/main.js"></script>
   </body>
 </html>

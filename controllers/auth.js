@@ -1,6 +1,12 @@
 const passport = require("passport");
+require("dotenv").config({ path: "../config/.env" });
 const validator = require("validator");
 const User = require("../models/User");
+const Recaptcha = require("express-recaptcha").RecaptchaV2;
+const recaptcha = new Recaptcha(
+  process.env.RECAPTCHA_SITE_KEY,
+  process.env.RECAPTCHA_SECRET_KEY,
+);
 
 exports.getLogin = (req, res) => {
   if (req.user) {
@@ -60,7 +66,7 @@ exports.postLogin = (req, res, next) => {
           res.redirect("/login");
         }
       });
-    }
+    },
   );
 };
 
@@ -110,36 +116,43 @@ exports.postSignup = (req, res, next) => {
     gmail_remove_dots: false,
   });
 
-  const user = new User({
-    userName: req.body.userName,
-    email: req.body.email,
-    password: req.body.password,
-    goal: req.body.goal,
-  });
+  recaptcha.verify(req, (error, data) => {
+    if (error) {
+      validationErrors.push({ msg: "reCAPTCHA verification failed" });
+      req.flash("errors", validationErrors);
+      return res.redirect("/signup");
+    }
+    const user = new User({
+      userName: req.body.userName,
+      email: req.body.email,
+      password: req.body.password,
+      goal: req.body.goal,
+    });
 
-  User.findOne(
-    { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
-    (err, existingUser) => {
-      if (err) {
-        return next(err);
-      }
-      if (existingUser) {
-        req.flash("errors", {
-          msg: "Account with that email address or username already exists.",
-        });
-        return res.redirect("../signup");
-      }
-      user.save((err) => {
+    User.findOne(
+      { $or: [{ email: req.body.email }, { userName: req.body.userName }] },
+      (err, existingUser) => {
         if (err) {
           return next(err);
         }
-        req.logIn(user, (err) => {
+        if (existingUser) {
+          req.flash("errors", {
+            msg: "Account with that email address or username already exists.",
+          });
+          return res.redirect("../signup");
+        }
+        user.save((err) => {
           if (err) {
             return next(err);
           }
-          res.redirect("/purchases");
+          req.logIn(user, (err) => {
+            if (err) {
+              return next(err);
+            }
+            res.redirect("/purchases");
+          });
         });
-      });
-    }
-  );
+      },
+    );
+  });
 };
