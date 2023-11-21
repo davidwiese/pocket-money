@@ -1745,8 +1745,20 @@ html {
   left: -2px;
 }
 
+.top-\[-3px\] {
+  top: -3px;
+}
+
 .top-\[-1px\] {
   top: -1px;
+}
+
+.top-\[-2px\] {
+  top: -2px;
+}
+
+.top-\[1px\] {
+  top: 1px;
 }
 
 .mx-auto {
@@ -1813,6 +1825,14 @@ html {
 
 .h-\[74px\] {
   height: 74px;
+}
+
+.h-\[73px\] {
+  height: 73px;
+}
+
+.h-\[70px\] {
+  height: 70px;
 }
 
 .min-h-screen {
